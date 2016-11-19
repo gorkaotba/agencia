@@ -1,0 +1,33 @@
+{# Muestra de las categorías #}
+{% extends "BloggerAgenciaBundle::layout.html.twig" %}
+{% block title %} {{categoria.nombre}} {% endblock %}
+
+{% block body %}
+
+{% if confirm is defined %}
+
+<p class="confirm">{{confirm}}</p>
+
+{% endif %}
+
+<h1>{{categoria.nombre}}</h1>
+{% if is_granted('ROLE_ADMIN') %}
+
+
+<p><a href="{{path('blogger_admin_formCategoria', {'id': categoria.id})}}"><img src="{{asset('img/edit.png')}}"></a>
+<a href="{{path('blogger_admin_eliminarCategoria', {'id': categoria.id})}}" onclick="return confirm('¿Estás seguro de que quieres borrar esta categoría?');"><img src="{{asset('img/eliminar.png')}}"></a></p>
+
+{% endif %}
+<div><img src="{{categoria.img}}" width="500" height="300" class="irudi"></div>
+
+{% for oferta in categoria.ofertas %}
+
+	<h3><a href="{{path ('blogger_agencia_oferta', {'id': oferta.id})}}">{{oferta.titulo}} - {{oferta.coste}}€</a></h3>
+
+	{% else %}
+
+	<p>No hay ofertas disponibles</p>
+
+{% endfor %}
+
+{% endblock %}

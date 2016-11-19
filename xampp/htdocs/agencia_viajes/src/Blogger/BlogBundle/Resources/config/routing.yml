@@ -1,0 +1,7 @@
+blogger_Blog_category:
+    path:     /category
+    defaults: { _controller: BloggerBlogBundle:Blog:category }
+
+blogger_Blog_category_show:
+    path:     /category/{id}
+    defaults: { _controller: BloggerBlogBundle:Blog:categoryShow }

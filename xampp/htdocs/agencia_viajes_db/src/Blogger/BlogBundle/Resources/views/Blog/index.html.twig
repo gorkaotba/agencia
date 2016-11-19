@@ -1,0 +1,51 @@
+{# Página principal de la agencia, donde se listan las categorías con sus 3 ofertas más baratas #}
+{% extends "BloggerAgenciaBundle::layout.html.twig" %}
+{% block title %} Axmi {% endblock %}
+
+{% block body %}
+
+{% if confirm is defined %}
+
+<p class="confirm">{{confirm}}</p>
+
+{% endif %}
+
+
+ {% for categoria in categorias %}
+
+ 	<h1><a href="{{path ('blogger_agencia_category_show', {'id': categoria.id})}}">{{categoria.nombre}}</a></h1>
+
+ 	{% set limit = 0 %}
+
+ 		{% for oferta in categoria.ofertas if limit < 3 %}
+
+ 			
+
+ 			<h3><a href="{{path ('blogger_agencia_oferta', {'id': oferta.id})}}">- {{oferta.titulo}} - {{oferta.coste}}€</a></h3>
+ 			
+
+ 			{% set limit = limit + 1 %}
+ 			
+
+
+ 		{% else %}
+
+ 			<p>No hay ofertas disponibles</p>
+
+ 		{% endfor %}
+
+ 		<p class="numOfertas">Número de ofertas: {{categoria.ofertas|length}}</p>
+
+      
+
+    {% else %}
+        <p>No hay categorías disponibles</p>
+    {% endfor %}
+
+{% endblock %}
+
+{% block sidebar %}
+
+<img src="{{asset('img/bienvenido.png')}}" width="350px">
+
+{% endblock %}

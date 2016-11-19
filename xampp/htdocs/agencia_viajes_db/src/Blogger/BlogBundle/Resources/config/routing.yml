@@ -1,0 +1,11 @@
+blogger_agencia_homepage:
+    path:     /
+    defaults: { _controller: BloggerAgenciaBundle:Agencia:index }
+    
+blogger_agencia_category:
+    path:     /category
+    defaults: { _controller: BloggerAgenciaBundle:Blog:category }
+
+blogger_agencia_category_show:
+    path:     /category/{id}
+    defaults: { _controller: BloggerAgenciaBundle:Blog:categoryShow }

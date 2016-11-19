@@ -1,0 +1,23 @@
+{# Listado de las categorías #}
+{% extends "BloggerBlogBundle::layout.html.twig" %}
+{% block title %} Categorías {% endblock %}
+
+{% block body %}
+
+{% if confirm is defined %}
+
+<p class="confirm">{{confirm}}</p>
+
+{% endif %}
+
+	{% for categoria in categorias %}
+
+		<h1 class="listTit"><a href="{{path ('blogger_blog_show', {'id': categoria.id})}}">{{categoria.nombre}}</a></h1>
+
+	{% else %}
+
+		<p>No hay categorías disponibles</p>
+
+	{% endfor %}
+
+{% endblock %}
